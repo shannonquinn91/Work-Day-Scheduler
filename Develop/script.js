@@ -5,6 +5,8 @@ var container = $(".container")
 
 var hours = ["8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "500pm"];
 
+var values = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+
 for (var i = 0; i < hours.length; i++) {
     //Create row for each hour of the day
     var hourRow = $("<div>");
@@ -14,6 +16,7 @@ for (var i = 0; i < hours.length; i++) {
     var hourCol = $("<div>");
     //Assign column class
     hourCol.attr("class", "col-2");
+    hourCol.attr("id", values[i])
     //Append column to row
     hourRow.append(hourCol);
     //Set text of column to hour of the day
@@ -27,7 +30,7 @@ for (var i = 0; i < hours.length; i++) {
     //Create text area for user input
     var input = $("<textarea>")
     //Assign placeholder text for text area
-    input.attr("placeholder", "User will input text here")
+    input.attr("placeholder", "Event")
     //Text area will occupy 100% of the middle column
     input.attr("cols", "100")
     //Append text area to middle column
