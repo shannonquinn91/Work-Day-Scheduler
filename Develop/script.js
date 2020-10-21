@@ -24,8 +24,14 @@ for (var i = 0; i < hours.length; i++) {
     var planCol = $("<div>");
     //Assign class to middle column
     planCol.attr("class", "col-9");
-    //Just to test
-    planCol.text("Test");
+    //Create text area for user input
+    var input = $("<textarea>")
+    //Assign placeholder text for text area
+    input.attr("placeholder", "User will input text here")
+    //Text area will occupy 100% of the middle column
+    input.attr("cols", "100")
+    //Append text area to middle column
+    planCol.append(input)
     //Append plan column to the row (which is already appended to container)
     hourRow.append(planCol);
     //Create column for save button
@@ -45,8 +51,7 @@ for (var i = 0; i < hours.length; i++) {
     saveBtnCol.append(saveBtn);
 }; 
 
-
-
-{/* <div class="container">
-      <button type="button" class="saveBtn btn btn-success">Save</button>
-    </div> */}
+// let day = document.querySelector("#currentDay")
+// let m = moment()
+// //setInterval(function(){ alert("Hello"); }, 3000);
+// day.textContent= m.format("dddd, MMM Do, h:mm a").toString()
