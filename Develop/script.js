@@ -2,6 +2,8 @@ var currentDay = $("#currentDay");
 let m = moment();
 currentDay.text(m.format("[Today is] dddd[,] LL"));
 var container = $(".container")
+var data = {};
+localStorage.setItem(key, JSON.parse(data));
 
 var hours = ["8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm"];
 
@@ -27,14 +29,21 @@ for (var i = 0; i < hours.length; i++) {
     var planCol = $("<div>");
     //Assign class to middle column
     planCol.attr("class", "col-9");
+    
+    //if statement goes here? if (input.attr("data-time") ==== saveBtn.attr("data-time")) {create text area?}
+    
     //Create text area for user input
-    var input = $("<textarea>")
+    var input = $("<textarea>");
+    //Assign class to text area
+    input.attr("class", "inputBox");
+    //Assign data to text area
+    input.attr("data-time", hours[i]);
     //Assign placeholder text for text area
-    input.attr("placeholder", "Event")
+    input.attr("placeholder", "Event");
     //Text area will occupy 100% of the middle column
-    input.attr("cols", "100")
+    input.attr("cols", "100");
     //Append text area to middle column
-    planCol.append(input)
+    planCol.append(input);
     //Append plan column to the row (which is already appended to container)
     hourRow.append(planCol);
     //Create column for save button
@@ -48,6 +57,7 @@ for (var i = 0; i < hours.length; i++) {
     //Assign attributes to button to apply CSS
     saveBtn.attr("type", "button");
     saveBtn.attr("class", "saveBtn btn btn-success");
+    saveBtn.attr("data-time", hours[i]);
     saveBtn.attr("onclick", "updateEvent()");
     //Set text content of save button
     saveBtn.text("Save");
@@ -58,10 +68,11 @@ for (var i = 0; i < hours.length; i++) {
     color(hourCol);
 }; 
 
+
 function updateEvent (){
-    var event = input.val() || [];
-    localStorage.setItem(event, JSON.stringify(event));
-    input.text(event);
+    var dataTime = $(this).attr("data-time");
+    $(`.inputBox[data-time="${dataTime}"`);
+    
 }
 
     
