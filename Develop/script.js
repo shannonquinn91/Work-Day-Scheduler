@@ -1,9 +1,9 @@
 var currentDay = $("#currentDay");
 let m = moment();
-currentDay.text(m.format("[Today is] dddd[,] MMM Mo[,] YYYY"));
+currentDay.text(m.format("[Today is] dddd[,] LL"));
 var container = $(".container")
 
-var hours = ["8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "500pm"];
+var hours = ["8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm"];
 
 var values = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 
@@ -52,9 +52,29 @@ for (var i = 0; i < hours.length; i++) {
     saveBtn.text("Save");
     //Append save button to last column (which is already appended to the row)
     saveBtnCol.append(saveBtn);
+    //Calls the function that changes the color for the hour column to indicate current hour of the day 
+    color(hourCol);
 }; 
 
-// let day = document.querySelector("#currentDay")
-// let m = moment()
-// //setInterval(function(){ alert("Hello"); }, 3000);
-// day.textContent= m.format("dddd, MMM Do, h:mm a").toString()
+//Function that changes the color of the hour column based on the current hour of the day
+function color(element) {
+    //Variable set by moment.js current hour of the day integer
+    var currentHour = moment().format('H');
+    //Variable that pulls the value of the id of a certain element (hourCol) and parses to integer
+    var timeVal = parseInt(element.attr('id'));
+    //if/else statements to compare timeVal and currentHour integers
+    if (timeVal < currentHour) {
+        element.css("background-color", "red");
+    }
+    else if (timeVal > currentHour) {
+        element.css("background-color", "green");
+    }
+    else {
+        element.css("background-color", "yellow");
+    }
+};
+
+
+
+
+
