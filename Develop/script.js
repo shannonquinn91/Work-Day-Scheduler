@@ -48,14 +48,23 @@ for (var i = 0; i < hours.length; i++) {
     //Assign attributes to button to apply CSS
     saveBtn.attr("type", "button");
     saveBtn.attr("class", "saveBtn btn btn-success");
+    saveBtn.attr("onclick", "updateEvent()");
     //Set text content of save button
     saveBtn.text("Save");
     //Append save button to last column (which is already appended to the row)
     saveBtnCol.append(saveBtn);
-    //Calls the function that changes the color for the hour column to indicate current hour of the day 
+
+    //Calls the function that changes the color for the hour column to indicate current hour of the day
     color(hourCol);
 }; 
 
+function updateEvent (){
+    var event = input.val() || [];
+    localStorage.setItem(event, JSON.stringify(event));
+    input.text(event);
+}
+
+    
 //Function that changes the color of the hour column based on the current hour of the day
 function color(element) {
     //Variable set by moment.js current hour of the day integer
@@ -73,8 +82,3 @@ function color(element) {
         element.css("background-color", "yellow");
     }
 };
-
-
-
-
-
