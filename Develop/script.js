@@ -2,8 +2,7 @@ var currentDay = $("#currentDay");
 let m = moment();
 currentDay.text(m.format("[Today is] dddd[,] LL"));
 var container = $(".container")
-var data = {};
-localStorage.setItem(key, JSON.parse(data));
+
 
 var hours = ["8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm"];
 
@@ -72,7 +71,9 @@ for (var i = 0; i < hours.length; i++) {
 function updateEvent (){
     var dataTime = $(this).attr("data-time");
     $(`.inputBox[data-time="${dataTime}"`);
-    
+    var data = $(".inputBox").val() || {};
+    localStorage.setItem(JSON.parse(data));
+    localStorage.getItem(JSON.stringify(data))
 }
 
     
