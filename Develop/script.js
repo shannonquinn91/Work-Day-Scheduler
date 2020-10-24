@@ -37,7 +37,7 @@ for (var i = 0; i < hours.length; i++) {
     input.attr("data-time", hours[i]);
     //Assign placeholder text for text area
     input.attr("placeholder", "Event");
-    //Checks if 
+    //Checks if the data-time key matches the key in the dataObj, if they do then the value of the input is stored in dataObj
     if (hours[i] in dataObj) {
         input.val(dataObj[hours[i]])
     }
@@ -57,8 +57,11 @@ for (var i = 0; i < hours.length; i++) {
     var saveBtn = $("<button>");
     //Assign attributes to button to apply CSS
     saveBtn.attr("type", "button");
+    //Assigns class to save buttons
     saveBtn.attr("class", "saveBtn btn btn-success");
+    //Setting data-time attribute to link save button to text area
     saveBtn.attr("data-time", hours[i]);
+    //Adds click event to each save button. Click event is the updateEvent function
     saveBtn.on("click", updateEvent);
     //Set text content of save button
     saveBtn.text("Save");
@@ -69,14 +72,15 @@ for (var i = 0; i < hours.length; i++) {
     color(hourCol);
 }; 
 
-
+//Function that pulls the data from the user input and adds it to the local storage object. 
 function updateEvent (){
+    //sets dataTime variable so that whichever button is clicked is the text area the content is taken from
     var dataTime = $(this).attr("data-time");
+    //storing the input of the user in a variable
     var userInput = $(`.inputBox[data-time="${dataTime}"`).val();
-    
-    console.log(userInput);
-
+    //Giving the dataTime key a value, that being the user input
     dataObj[dataTime] = userInput;
+    //Stringifys the object to store in local storage
     localStorage.setItem("allData", JSON.stringify(dataObj));
 }
 
