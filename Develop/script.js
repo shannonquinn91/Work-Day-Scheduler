@@ -2,6 +2,8 @@ var currentDay = $("#currentDay");
 let m = moment();
 currentDay.text(m.format("[Today is] dddd[,] LL"));
 var container = $(".container")
+//Page loads, get all data from the object to local storage
+var dataObj = JSON.parse(localStorage.getItem("allData")) || {};
 
 var hours = ["8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm"];
 
@@ -27,24 +29,24 @@ for (var i = 0; i < hours.length; i++) {
     var planCol = $("<div>");
     //Assign class to middle column
     planCol.attr("class", "col-9");
-    
-    //if statement goes here? if (input.attr("data-time") ==== saveBtn.attr("data-time")) {create text area?}
-    if (1 < 2) {
-        //Create text area for user input
-        var input = $("<textarea>");
-        //Assign class to text area
-        input.attr("class", "inputBox");
-        //Assign data to text area
-        input.attr("data-time", hours[i]);
-        //Assign placeholder text for text area
-        input.attr("placeholder", "Event");
-        //Text area will occupy 100% of the middle column
-        input.attr("cols", "100");
-        //Append text area to middle column
-        planCol.append(input);
-        //Append plan column to the row (which is already appended to container)
-        hourRow.append(planCol);
-    };
+    //Create text area for user input
+    var input = $("<textarea>");
+    //Assign class to text area
+    input.attr("class", "inputBox");
+    //Assign data to text area
+    input.attr("data-time", hours[i]);
+    //Assign placeholder text for text area
+    input.attr("placeholder", "Event");
+    //Checks if 
+    if (hours[i] in dataObj) {
+        input.val(dataObj[hours[i]])
+    }
+    //Text area will occupy 100% of the middle column
+    input.attr("cols", "100");
+    //Append text area to middle column
+    planCol.append(input);
+    //Append plan column to the row (which is already appended to container)
+    hourRow.append(planCol);
     //Create column for save button
     var saveBtnCol = $("<div>");
     //Assign class to last column of row
@@ -57,7 +59,7 @@ for (var i = 0; i < hours.length; i++) {
     saveBtn.attr("type", "button");
     saveBtn.attr("class", "saveBtn btn btn-success");
     saveBtn.attr("data-time", hours[i]);
-    saveBtn.attr("onclick", "updateEvent()");
+    saveBtn.on("click", updateEvent);
     //Set text content of save button
     saveBtn.text("Save");
     //Append save button to last column (which is already appended to the row)
@@ -69,13 +71,13 @@ for (var i = 0; i < hours.length; i++) {
 
 
 function updateEvent (){
-    var allData = JSON.parse(localStorage.setItem("allData")) || {};
     var dataTime = $(this).attr("data-time");
-    $(`.inputBox[data-time="${dataTime}"`);
-    var userInput = $(".inputBox").val() || {};
-    //localStorage.setItem("data", JSON.parse(userInput));
-    //localStorage.getItem("data", JSON.stringify(userInput));
-    var dataObj = JSON.parse(localStorage.getItem("allData")) || {};
+    var userInput = $(`.inputBox[data-time="${dataTime}"`);
+    console.log(userInput)
+
+    dataObj[dataTime] = userInput;
+    console.log(dataObj)
+    localStorage.setItem("allData", JSON.stringify(dataObj));
 }
 
     
