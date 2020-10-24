@@ -16,7 +16,7 @@ Once we did that, we started writing the user input to local storage using varia
 
 Overall, I felt pretty successful with this project and being able to dynamically create almost everything! Local storage is definitely a difficult concept for me, but I'll continue to work on it!
 
-![Overview of Page](./Assets/screenshot1.png)
-![Showing Local Storage](./Assets/screenshot2.png)
+![Overview of Page](./Develop/Assets/screenshot1.png)
+![Showing Local Storage](./Develop/Assets/screenshot2.png)
 
 
