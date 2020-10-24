@@ -72,11 +72,11 @@ for (var i = 0; i < hours.length; i++) {
 
 function updateEvent (){
     var dataTime = $(this).attr("data-time");
-    var userInput = $(`.inputBox[data-time="${dataTime}"`);
-    console.log(userInput)
+    var userInput = $(`.inputBox[data-time="${dataTime}"`).val();
+    
+    console.log(userInput);
 
     dataObj[dataTime] = userInput;
-    console.log(dataObj)
     localStorage.setItem("allData", JSON.stringify(dataObj));
 }
 
