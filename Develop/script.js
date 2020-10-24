@@ -29,21 +29,22 @@ for (var i = 0; i < hours.length; i++) {
     planCol.attr("class", "col-9");
     
     //if statement goes here? if (input.attr("data-time") ==== saveBtn.attr("data-time")) {create text area?}
-    
-    //Create text area for user input
-    var input = $("<textarea>");
-    //Assign class to text area
-    input.attr("class", "inputBox");
-    //Assign data to text area
-    input.attr("data-time", hours[i]);
-    //Assign placeholder text for text area
-    input.attr("placeholder", "Event");
-    //Text area will occupy 100% of the middle column
-    input.attr("cols", "100");
-    //Append text area to middle column
-    planCol.append(input);
-    //Append plan column to the row (which is already appended to container)
-    hourRow.append(planCol);
+    if (1 < 2) {
+        //Create text area for user input
+        var input = $("<textarea>");
+        //Assign class to text area
+        input.attr("class", "inputBox");
+        //Assign data to text area
+        input.attr("data-time", hours[i]);
+        //Assign placeholder text for text area
+        input.attr("placeholder", "Event");
+        //Text area will occupy 100% of the middle column
+        input.attr("cols", "100");
+        //Append text area to middle column
+        planCol.append(input);
+        //Append plan column to the row (which is already appended to container)
+        hourRow.append(planCol);
+    };
     //Create column for save button
     var saveBtnCol = $("<div>");
     //Assign class to last column of row
