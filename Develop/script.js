@@ -68,11 +68,13 @@ for (var i = 0; i < hours.length; i++) {
 
 
 function updateEvent (){
+    var allData = JSON.parse(localStorage.setItem("allData")) || {};
     var dataTime = $(this).attr("data-time");
     $(`.inputBox[data-time="${dataTime}"`);
     var userInput = $(".inputBox").val() || {};
-    localStorage.setItem("data", JSON.parse(userInput));
-    localStorage.getItem("data", JSON.stringify(userInput));
+    //localStorage.setItem("data", JSON.parse(userInput));
+    //localStorage.getItem("data", JSON.stringify(userInput));
+    var dataObj = JSON.parse(localStorage.getItem("allData")) || {};
 }
 
     
